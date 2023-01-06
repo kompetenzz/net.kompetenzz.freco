@@ -38,11 +38,11 @@ install it with the command-line tool [cv](https://github.com/civicrm/cv).
 Navigate to /civicrm/a/#/freco/computer and set valzues as needed. The URL query params are being synced to provide a shareable link to the results. 
 
 ### API4
-Entity "FreCo" is propagated with two endpoint actions both expecting the same parameters(!):   
+Entity "FreCo" is propagated with two endpoint actions both expecting the same parameters(!). Visit  Api4 explorer under /civicrm/api4#/explorer/FreCo/ to taste.
 
 #### compute: generate data
 ```
-$results = \Civi\Api4\FreCo::info()
+$results = \Civi\Api4\FreCo::compute()
   ->setActivityTypeId(110)
   ->setActivityStatusIds(2)
   ->setCustomGroupId(70)

@@ -1,0 +1,142 @@
+<div class="crm-container">
+  <div crm-ui-debug="$scope"></div>
+
+  <h1 crm-page-title>FreCo - the frequency computer</h1>
+
+  <form name="myForm" crm-ui-id-scope>
+
+    <div crm-ui-accordion="{
+      title: ts('Activity'), 
+      collapsed: apiParams.activityTypeId && apiParams.activityStatusIds }" >
+      <div crm-ui-field="{
+        name: 'activityTypeId', 
+        title: ts('Activity type'), 
+        required: 1}">
+        <input class="huge"
+          crm-entityref="{
+            entity: 'OptionValue',
+            api: {
+              params: {
+                option_group_id: 2
+              }
+            }, 
+            select: {
+              allowClear: true, 
+              placeholder: ts('Activity type'), 
+              minimumInputLength: 0 }}"
+          name="activityTypeId"
+          crm-ui-id="activityTypeId"
+          ng-model="apiParams.activityTypeId"
+          ng-required="1"
+        />
+      </div>
+
+      <div crm-ui-field="{
+        name: 'activityStatusIds', 
+        title: ts('Activity Status'), 
+        required: 1}">
+        <input class="huge"
+          crm-entityref="{
+            entity: 'OptionValue',
+            api: {
+              params: {
+                option_group_id: 25
+              }
+            }, 
+            select: {
+              allowClear: true, 
+              multiple: true,
+              placeholder: ts('Activity Status'), 
+              minimumInputLength: 0 }}"
+          name="activityStatusIds"
+          crm-ui-id="activityStatusIds"
+          ng-model="apiParams.activityStatusIds"
+          ng-required="1"
+        />
+      </div>
+    </div>
+
+    <div crm-ui-accordion="{
+      title: ts('Custom Group'), 
+      collapsed: apiParams.customGroupId }" >
+      <div crm-ui-field="{
+          name: 'group', 
+          title: ts('Custom Group'), 
+          required: 1}">
+        <input class="huge"
+          crm-entityref="{
+            entity: 'CustomGroup', 
+            select: {
+              allowClear: true, 
+              placeholder: ts('Custom Group'), 
+              minimumInputLength: 0 }}"
+          name="customGroupId"
+          crm-ui-id="customGroupId"
+          ng-model="apiParams.customGroupId"
+          ng-required="1"
+        />
+      </div>
+    </div>
+
+    <div ng-if="apiParams.customGroupId" crm-ui-accordion="{
+      title: ts('Custom Fields'), 
+      collapsed: apiParams.customFieldIds }">
+      <div crm-ui-field="{
+          name: 'customFieldIds', 
+          title: ts('Fields'), 
+          required: 0}">
+        <input class="huge"
+          crm-entityref="{
+            entity: 'CustomField',
+            api: {
+              params: {
+                custom_group_id: apiParams.customGroupId
+              }
+            },
+            select: {
+              allowClear: true, 
+              multiple: true,
+              placeholder: ts('All'), 
+              minimumInputLength: 0 }}"
+          name="customFieldIds"
+          crm-ui-id="customFieldIds"
+          ng-model="apiParams.customFieldIds"
+          ng-required="1"
+        />
+      </div>
+    </div>
+
+    <div ng-if="apiParams.customGroupId" crm-ui-accordion="{
+      title: ts('Results') }">
+
+      <div ng-if="info">
+        <h2><small><label>{{ ts('Activity') }}</label></small> {{ info['activity_type'] }}</h2>
+        <p>
+          <label>{{ ts('Count')}}:</label> {{ info['items'] }},
+          <label>{{ts('Activity Status')}}:</label> {{ info['activity_stati'] }}, 
+          <label>{{ts('Custom Group')}}:</label> {{ info['custom_group'] }}, 
+          <label>{{ts('Custom Fields')}}:</label> 
+            <span ng-if="info['custom_fields']"><br>{{ info['custom_fields'] }}</span>
+            <span ng-if="!info['custom_fields']">{{ ts('all') }}</span>
+        </p>
+      </div>
+
+      <table ng-if="results"
+             class="table table-bordered table-striped form-layout-compressed">
+        <tr>
+          <th>Antwort</th>
+          <th>Häufigkeit</th>
+        </tr>
+        <tr ng-repeat="item in results">
+          <td>{{ item.title }}</td>
+          <td>{{ item.value }}</td>
+        </tr>
+      </table>
+
+      <div class="error" ng-if="error">{{ error }}</div>
+    </div>
+
+  </form>
+
+
+</div>

@@ -1,15 +1,28 @@
 # net.kompetenzz.freco
 
-![Screenshot](/images/screenshot.png)
+This extensions provides API4 and UI to compute frequency distribution across a set of custom fields. 
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+Given a survey based on activities with custom fields each using an option set as results, this extension generates the occurence of each option value:
 
-The extension is licensed under [AGPL-3.0](LICENSE.txt).
+```
+,-----------------------------------------.
+|         Field                   | Count |
+|---------------------------------+-------|
+| CustomfieldLabel1: Optionlabel1 |  16   |
+| CustomfieldLabel1: Optionlabel2 |  23   |
+| CustomfieldLabel1: OptionlabelN |   1   |
+| CustomfieldLabel2: Optionlabel6 |  16   |
+| ...                             |  ...  |
+| CustomfieldLabelN: Optionlabel2 |  19   |
+| CustomfieldLabelN: Optionlabel7 |  13   |
+| CustomfieldLabelN: Optionlabel8 |   6   |
+`-----------------------------------------´
+```
 
 ## Requirements
 
-* PHP v7.4+
-* CiviCRM (*FIXME: Version number*)
+* PHP v7.3+
+* CiviCRM (5.39+)
 
 ## Installation (Web UI)
 
@@ -20,35 +33,29 @@ Learn more about installing CiviCRM extensions in the [CiviCRM Sysadmin Guide](h
 Sysadmins and developers may download the `.zip` file for this extension and
 install it with the command-line tool [cv](https://github.com/civicrm/cv).
 
-```bash
-cd <extension-dir>
-cv dl net.kompetenzz.freco@https://github.com/FIXME/net.kompetenzz.freco/archive/master.zip
-```
-or
-```bash
-cd <extension-dir>
-cv dl net.kompetenzz.freco@https://lab.civicrm.org/extensions/net.kompetenzz.freco/-/archive/main/net.kompetenzz.freco-main.zip
-```
+## Uaage
+### UI
+Navigate to /civicrm/a/#/freco/computer and set valzues as needed. The URL query params are being synced to provide a shareable link to the results. 
 
-## Installation (CLI, Git)
+### API4
+Entity "FreCo" is propagated with two endpoint actions both expecting the same parameters(!):   
 
-Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) repo for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-git clone https://github.com/FIXME/net.kompetenzz.freco.git
-cv en freco
+#### compute: generate data
 ```
-or
-```bash
-git clone https://lab.civicrm.org/extensions/net.kompetenzz.freco.git
-cv en freco
+$results = \Civi\Api4\FreCo::info()
+  ->setActivityTypeId(110)
+  ->setActivityStatusIds(2)
+  ->setCustomGroupId(70)
+  ->setCustomFieldIds('516,517,518,519,520,521,522,523,524,525,526,527,528,530,531,533,534,535,536,537,538')
+  ->execute();
 ```
 
-## Getting Started
-
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
-
-## Known Issues
-
-(* FIXME *)
+#### info: get human readable metadata
+```
+$results = \Civi\Api4\FreCo::info()
+  ->setActivityTypeId(110)
+  ->setActivityStatusIds(2)
+  ->setCustomGroupId(70)
+  ->setCustomFieldIds('516,517,518,519,520,521,522,523,524,525,526,527,528,530,531,533,534,535,536,537,538')
+  ->execute();
+```

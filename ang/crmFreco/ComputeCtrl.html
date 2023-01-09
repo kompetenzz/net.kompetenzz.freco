@@ -124,8 +124,8 @@
       <table ng-if="results"
              class="table table-bordered table-striped form-layout-compressed">
         <tr>
-          <th>Antwort</th>
-          <th>Häufigkeit</th>
+          <th>{{ ts('Reply')}}</th>
+          <th>{{ ts('Count')}}</th>
         </tr>
         <tr ng-repeat="item in results">
           <td>{{ item.title }}</td>

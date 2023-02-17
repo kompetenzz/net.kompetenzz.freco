@@ -123,11 +123,11 @@
 
       <div style="display:flex; flex-direction: row; justify-content: space-between; align-items: stretch; flex-wrap: wrap">
       <div class="card" 
-           style="width: 20%; margin: 4px; border: 1px solid grey;"
+           style="width: 20%; margin: 4px; background-color: rgb(243, 246, 247); padding: 4px"
            ng-repeat="(fieldId,answers) in groupedResults">  
         <div class="card-body">
           <h5 class="card-title">{{ answers[0].field_title }}</h5>
-          <table class="webform-analysis-table table table-bordered table-condensed table-hover table-striped">
+          <table class="table tabletable-condensed table-hover">
             <tr ng-repeat="item in answers">
               <td>{{ item.title}}</td> 
               <td>{{ item.value }}</td>

@@ -43,6 +43,15 @@
       return crmApi4('FreCo', 'compute', params)
         .then(function(results) {
           $scope.results = results;
+          $scope.groupedResults = {};
+          if (!results.length)
+            return;
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            if (!(item.field_id in $scope.groupedResults))
+              $scope.groupedResults[item.field_id] = [];
+            $scope.groupedResults[item.field_id].push(item);
+          }
         }, function(failure) {
           $scope.error = failure;
       });

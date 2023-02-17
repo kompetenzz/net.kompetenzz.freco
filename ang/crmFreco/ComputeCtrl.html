@@ -121,18 +121,21 @@
         </p>
       </div>
 
-      <table ng-if="results"
-             class="table table-bordered table-striped form-layout-compressed">
-        <tr>
-          <th>{{ ts('Reply')}}</th>
-          <th>{{ ts('Count')}}</th>
-        </tr>
-        <tr ng-repeat="item in results">
-          <td>{{ item.title }}</td>
-          <td>{{ item.value }}</td>
-        </tr>
-      </table>
-
+      <div style="display:flex; flex-direction: row; justify-content: space-between; align-items: stretch; flex-wrap: wrap">
+      <div class="card" 
+           style="width: 20%; margin: 4px; border: 1px solid grey;"
+           ng-repeat="(fieldId,answers) in groupedResults">  
+        <div class="card-body">
+          <h5 class="card-title">{{ answers[0].field_title }}</h5>
+          <table class="webform-analysis-table table table-bordered table-condensed table-hover table-striped">
+            <tr ng-repeat="item in answers">
+              <td>{{ item.title}}</td> 
+              <td>{{ item.value }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
       <div class="error" ng-if="error">{{ error }}</div>
     </div>
 

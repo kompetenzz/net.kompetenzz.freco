@@ -5,53 +5,37 @@ namespace Civi\FreCo;
  */
 class Computer extends FreCoBase {
 
-  private static function _getResultsItem($customGroup, $customField, $activity) {
-    return [
-      'id' => self::_getResultsItemId($customGroup, $customField, $activity),
-      'name' => self::_getResultsItemName($customGroup, $customField, $activity),
-      'title' => self::_getResultsItemTitle($customGroup, $customField, $activity),
-      'value' => 0
-    ];
+  private static function _getResultsItem(&$results, $customGroup, $customField, $activity) {
+    $fieldName = self::_getFieldName($customGroup, $customField);
+    $value = $activity[$fieldName];
+    $id = self::_getResultsItemId($customField['id'], $value);
+    $option = self::_getOption($customField, $value);
+    $optionName = $option != null ? $option["name"] : $value;
+    $optionTitle = $option != null ? $option["label"] : $value;
+    if (!array_key_exists($id, $results))
+      $results[$id] = [
+        'id' => $id,
+        'name' => $optionName,
+        'title' => $optionTitle,
+        'field_id' => $customField['id'],
+        'field_name' => $fieldName,
+        'field_title' => $customField['label'],
+        'value' => 0
+      ];
+    $results[$id]['value']++;
   }
 
-  private static function _getResultsItemId($customGroup, $customField, $activity) {
-    $name = self::_getFieldName($customGroup, $customField);
-    $value = $activity[$name];
+  private static function _getResultsItemId($fieldId, $value) {
     if (empty($value))
       $value = "null";
-    return $customField['id'] . "[" . $value . "]"; 
-  }
-
-  private static function _getResultsItemName($customGroup, $customField, $activity) {
-    $name = self::_getFieldName($customGroup, $customField); // groupname.fieldname
-    $value = $activity[$name]; // 0,1,NULL
-    if (empty($value)) 
-      return $customField['label'] . " [null]";
-
-    $option = self::_getOption($customField, $value);
-    $oName = $option != null ? $option["name"] : $value;
-    return $customField['name'] . "[" . $oName . "]"; 
-  }
-
-  private static function _getResultsItemTitle($customGroup, $customField, $activity) {
-    $name = self::_getFieldName($customGroup, $customField); // groupname.fieldname
-    $value = $activity[$name]; // 0,1,NULL
-    if (empty($value)) 
-      return $customField['label'] . ": keine Angabe"; 
-
-    $option = self::_getOption($customField, $value);
-    $oTitle = $option != null ? $option["label"] : $value;
-    return $customField['label'] . ": " . $oTitle; 
+    return $fieldId . "[" . $value . "]"; 
   }
 
   private static function _compute($customGroup, $customFields, $activities) {
     $results = [];
     foreach ($activities as $activity) {
       foreach($customFields as $customField) {
-        $id = self::_getResultsItemId($customGroup, $customField, $activity);  
-        if (!array_key_exists($id, $results)) 
-          $results[$id] = self::_getResultsItem($customGroup, $customField, $activity);
-        $results[$id]['value']++;
+        self::_getResultsItem($results,$customGroup, $customField, $activity);
       }
     }
     ksort($results);

@@ -6,8 +6,8 @@ return [
   'js' => [
     'ang/crmFreco.js',
     'ang/crmFreco/*.js',
-    'ang/crmFreco/*/*.js',
-  ],
+    'ang/crmFreco/*/*.js'
+    ],
   'css' => [
     'ang/crmFreco.css',
   ],
@@ -17,7 +17,7 @@ return [
   'requires' => [
     'crmUi',
     'crmUtil',
-    'ngRoute',
+    'ngRoute'
   ],
   'settings' => [],
 ];

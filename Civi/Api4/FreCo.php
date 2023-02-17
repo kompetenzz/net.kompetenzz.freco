@@ -35,14 +35,26 @@ class FreCo extends Generic\AbstractEntity {
       return [
         [
           'name' => 'id',
-          'description' => 'Field id + aggregation name',
+          'description' => 'Field id + option/value name',
         ],
         [
           'name' => 'name',
-          'description' => "The custom field name",
+          'description' => "Option/Value name",
         ],
         [
           'name' => 'title',
+          'description' => "Option/Value title",
+        ],
+        [
+          'name' => 'field_id',
+          'description' => "The custom field id",
+        ],
+        [
+          'name' => 'field_name',
+          'description' => "The custom field title",
+        ],
+        [
+          'name' => 'field_title',
           'description' => "The custom field title",
         ],
         [

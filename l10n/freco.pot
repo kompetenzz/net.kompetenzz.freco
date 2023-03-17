@@ -1,0 +1,96 @@
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Counts frequency distribution across a configurable set of custom fields..."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "This extension operates on contacts or activities."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "You have to choose at least a custom fields group."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "It's possible to select fields you want to handle. By default fields of types int, bool and date will be evaluated as well as fields with an option set."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "You may filter by Civicrm group."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "If you select an activity type and activity stati, activities are supposed to hold the custom data."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "If you do not, contacts with at least one field set will be used."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Custom data"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Custom Group"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Fields"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "All"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Group and/or Activity"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Group"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Activity type"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Activity Status"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Results"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Activity"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Count"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Custom Fields"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "all"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.js
+msgid "net.kompetenzz.freco"
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.js
+msgid "Computing..."
+msgstr ""
+
+#: ./ang/crmFreco/ComputeCtrl.js
+msgid "Ready"
+msgstr ""
+
+#: ./templates/CRM/crmFreco/ComputeCtrl.hlp
+msgid "The contact name  should be divided in two parts, the first name and last name."
+msgstr ""
+

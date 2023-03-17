@@ -1,0 +1,48 @@
+#: ./Civi/FreCo/Computer.php
+msgid "unset"
+msgstr "keine Angabe"
+
+msgid "true"
+msgstr "Ja"
+
+msgid "Group and/or Activity"
+msgstr "Gruppe und/oder Aktivität"
+
+msgid "Computing..."
+msgstr "Berechne..."
+
+msgid "Ready"
+msgstr "Erledigt"
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Counts frequency distribution across a configurable set of custom fields..."
+msgstr "Berechnet Häufigkeitsverteilung über einen konfigurierbaren Satz von benutzerdefinierten Feldern..."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "This extension operates on contacts or activities."
+msgstr "Diese Erweiterung arbeitet mit Kontakten oder Aktivitäten."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "You have to choose at least a custom fields group."
+msgstr "Du musst mindestens eine Gruppe benutzerdefinierter Felder auswählen."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "It's possible to select fields you want to handle. By default fields of types number, yes/no and date will be evaluated as well as fields with an option set."
+msgstr "Es ist möglich, die Felder auszuwählen, die zugrundegelegt werden. Standardmäßig werden alle Felder der Typen Zahl, Ja/Nein und Datum ebenso evaluiert wie Felder mit einem Optionenset."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "You may filter by Civicrm group."
+msgstr "Du kannst auch eine CiviCRM-Gruppe zur Einschränkung wählen."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "If you select an activity type and activity stati, activities are supposed to hold the custom data."
+msgstr "Werden Aktivitätstyp und -stati ausgewählt, geht freco davn aus, dass die Daten an Aktivitäten hängen."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "If you do not, contacts with at least one field set will be used."
+msgstr "Sonst werden alle Kontakte mit mindestens einem asugefüllten Feld berechnet."
+
+#: ./ang/crmFreco/ComputeCtrl.html
+msgid "Custom data"
+msgstr "Benutzerdefinierte Daten"
+

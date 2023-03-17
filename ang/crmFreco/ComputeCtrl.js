@@ -22,7 +22,8 @@
     $scope.apiParams = {
       'activityTypeId': $route.current.params.type,
       'activityStatusIds': $route.current.params.stati,
-      'customGroupId': $route.current.params.group,
+      'groupId': $route.current.params.group,
+      'customGroupId': $route.current.params.custom_group,
       'customFieldIds': $route.current.params.fields
     };
 
@@ -71,16 +72,24 @@
     };
 
     this.prerequisitesMet = function() {
-      return !!$scope.apiParams.activityTypeId 
-        && $scope.apiParams.activityStatusIds.length
-        && !!$scope.apiParams.customGroupId;
+      if(!$scope.apiParams.customGroupId)
+        return false;
+      if ($scope.apiParams.activityTypeId)      
+        return $scope.apiParams.activityStatusIds.length > 0;
+      return true;
     };
 
     this.syncUI = function () {
-      $location.search('type', $scope.apiParams.activityTypeId);
-      $location.search('stati', $scope.apiParams.activityStatusIds);
-      $location.search('group', $scope.apiParams.customGroupId);
-      $location.search('fields', $scope.apiParams.customFieldIds);
+      if (!!$scope.apiParams.activityTypeId)
+       $location.search('type', $scope.apiParams.activityTypeId);
+       if (!!$scope.apiParams.activityStatusIds)
+        $location.search('stati', $scope.apiParams.activityStatusIds);
+      if (!!$scope.apiParams.groupId)
+        $location.search('group', $scope.apiParams.groupId);
+      if (!!$scope.apiParams.customGroupId)
+        $location.search('custom_group', $scope.apiParams.customGroupId);
+      if (!!$scope.apiParams.customFieldIds)
+        $location.search('fields', $scope.apiParams.customFieldIds);
       if (ctrl.prerequisitesMet())
         ctrl.submit();
     };
